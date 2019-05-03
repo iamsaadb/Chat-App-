@@ -3,6 +3,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { updateMessages, handlTextChange, submitMessage } from './redux/actions/messageActions';
 import './App.css';
+import { Button } from 'react-bootstrap';
 
 const Message = ({ data }) => (<div className="text-left">{"Name: "+data}</div>);
 
