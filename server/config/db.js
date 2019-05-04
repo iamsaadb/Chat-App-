@@ -1,13 +1,5 @@
 /**
  * db.js                   -Connection to the cloud MongoDB atlas Server
- * @author                  Ratna Lama
- * @author
- * @author
- * @author
- * @author
- * @author
- *
- * @description             Handle connection to the cloud MongoDB atlas server
  */
 
 const mongoose = require("mongoose");

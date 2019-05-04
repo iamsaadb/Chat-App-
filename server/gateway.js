@@ -1,12 +1,5 @@
 /**
- * server.js               -Main entry point to the application
- * @author                  Ratna Lama
- * @author
- * @author
- * @author
- * @author
- * @author
- *
+ * gateway.js               -Main entry point to the application
  * @description             Main entry point
  */
 

@@ -10,21 +10,31 @@
     "type": "git",
     "url": "git+https://github.com/SFSU-CSC-667-867/final-aspiring-developers.git"
   },
-  "author": "Ratna Lama",
+  "author": "Aspiring Devs",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/SFSU-CSC-667-867/final-aspiring-developers/issues"
   },
   "homepage": "https://github.com/SFSU-CSC-667-867/final-aspiring-developers#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "bcryptjs": "^2.4.3",
     "config": "^3.1.0",
     "express": "^4.16.4",
     "express-validator": "^5.3.1",
     "gravatar": "^1.8.0",
+    "http-proxy": "^1.17.0",
     "jsonwebtoken": "^8.5.1",
+    "kafka": "^0.2.3",
     "mongoose": "^5.5.5",
-    "request": "^2.88.0"
+    "node": "^12.1.0",
+    "react": "^16.8.6",
+    "react-redux": "^7.0.3",
+    "react-router-dom": "^5.0.0",
+    "redis": "^2.8.0",
+    "redux": "^4.0.1",
+    "request": "^2.88.0",
+    "ws": "^7.0.0"
   },
   "devDependencies": {
     "concurrently": "^4.1.0",
