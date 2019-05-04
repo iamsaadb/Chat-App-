@@ -2,36 +2,32 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import messageReducer from './redux/reducers/messageReducer';
-import {insertMessage} from './redux/actions/messageActions';
+import { createStore, applyMiddleware } from 'redux';
+import createSagaMiddleware from 'redux-saga'
 
-const rootReducer = combineReducers({
-  messageReducer,
-});
 
-//we connect websocket at index because we want to create one instance that stays open:
-const store = createStore(rootReducer, applyMiddleware(thunk));
 
-//going through the gateway
-const webSocket = new WebSocket('ws://localhost:4000/websocket');
+import reducers from './reducers';
+import  setupSocket  from './sockets'
+import handleNewMessage from './sagas'
+import username from './utils/name'
 
-//now we have to handle incoming event:
-webSocket.onmessage = (message) => {
-    console.log(message)
-    store.dispatch(insertMessage(message.data));
-};
+const sagaMiddleware = createSagaMiddleware()
+ 
+const store = createStore(
+    reducers,
+    applyMiddleware(sagaMiddleware));
+
+const socket = setupSocket(store.dispatch, username)
+
+sagaMiddleware.run(handleNewMessage, {socket, username})
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>
-  , document.getElementById('root'));
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+	<Provider store={store}>
+		<App />
+	</Provider>, 
+	document.getElementById('root')
+	);
+registerServiceWorker();
