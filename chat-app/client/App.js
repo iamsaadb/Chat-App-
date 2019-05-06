@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { updateMessages, handlTextChange, submitMessage } from './redux/actions/messageActions';
 import './App.css';
+import Login from './Login';
 
 const Message = ({ data }) => (<div className="text-left">{"Name: "+data}</div>);
 
@@ -11,7 +13,6 @@ class App extends Component {
     super(props);
     
   }
-
   state = {
     name: "Chat Room!"
   };
@@ -34,7 +35,7 @@ class App extends Component {
     this.props.handlTextChange(e.target.value);
   }
 
-  render() {
+  render(){
     var arr = ["Nour","Tristan","Ratna", "Tigist"];
     return (
       <div className="App">
@@ -55,7 +56,6 @@ class App extends Component {
                       </div>
                     </a>
                   )
-                  
                 })
               }
               
