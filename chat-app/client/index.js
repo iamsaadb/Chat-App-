@@ -24,6 +24,7 @@ const socket = setupSocket(store.dispatch, username)
 
 sagaMiddleware.run(handleNewMessage, {socket, username})
 
+<<<<<<< HEAD:chat-app/src/index.js
 ReactDOM.render(
 	<Provider store={store}>
 		<App />
@@ -31,3 +32,7 @@ ReactDOM.render(
 	document.getElementById('root')
 	);
 registerServiceWorker();
+=======
+
+serviceWorker.unregister();
+>>>>>>> 3f0d470df8227af3855cae946b174dbb73399370:chat-app/client/index.js
