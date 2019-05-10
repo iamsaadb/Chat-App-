@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import './App.css';
 import {Sidebar} from "./containers/Sidebar";
 import {MessagesList} from "./containers/MessagesList";
@@ -8,7 +7,9 @@ import NavBar from "./components/Navbar";
 
 class ChatPage extends Component {
   render() {
+
     return (
+      
       <div>
         <NavBar />   
         <div id="container">

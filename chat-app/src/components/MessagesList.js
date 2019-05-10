@@ -2,13 +2,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Message from './Message'
-import { Container } from 'semantic-ui-react'
-import { Card } from 'react-bootstrap';
 
 const MessagesList = ({ messages }) => (
 	<section id="messages-list" >
-	
-		<ul>
+	   <div style={{textAlign: 'left', marginTop: 20, marginLeft: 20,lineHeight: 2}}>
+		<ul >
 			{messages.map(message => (
 				<Message
 					key={message.id}
@@ -16,7 +14,7 @@ const MessagesList = ({ messages }) => (
 				/>
 			))}
 		</ul>
-
+		</div>
 	</section>
 )
 

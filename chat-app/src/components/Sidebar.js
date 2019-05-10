@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 
 const Sidebar = ({ users }) => (
 	<aside id="sidebar" className="sidebar">
-	   <div class="ui fluid container" >
+	   <div style={{textAlign: 'center', marginTop: 20, lineHeight: 3, color: '#191970'}}>
 		<ul>
 			{users.map(user => (
 				<li key={user.id}>{user.name}</li>

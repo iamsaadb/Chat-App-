@@ -6,6 +6,13 @@ const users = (state = [], action) => {
 			return state.concat([
 					{ name: action.name, id: action.id }
 				])
+
+		case types.SET_USER:
+			return {
+			  ...state, 
+			  currentUser: action.name
+			};
+				
 		case types.USERS_LIST:
 			return action.users
 		default:

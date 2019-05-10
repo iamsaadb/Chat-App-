@@ -1,6 +1,6 @@
 
 import *  as types from '../constants/ActionTypes'
-import {addUser, messageReceived, populateUsersList} from '../actions'
+import {setUser, addUser, messageReceived, populateUsersList} from '../actions'
 
 const setupSocket = (dispatch, username) => {
 	const socket = new WebSocket('ws://localhost:8989')
@@ -14,6 +14,13 @@ const setupSocket = (dispatch, username) => {
 	socket.onmessage = (event) => {
 		const data = JSON.parse(event.data)
 		switch (data.type) {
+			case types.SET_USER:
+				dispatch(setUser(data.name))
+				socket.send(JSON.stringify({
+					type: types.ADD_USER,
+					name: data.name
+				}))
+			    break
 			case types.ADD_MESSAGE:
 				dispatch(messageReceived(data.message, data.author))
 				break

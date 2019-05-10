@@ -4,7 +4,7 @@ import users from "./users"
 
 const chat = combineReducers({
 	messages,
-	users
+	users,
 })
 
 export default chat
