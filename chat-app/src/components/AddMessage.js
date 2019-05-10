@@ -6,18 +6,6 @@ import { Input } from 'semantic-ui-react'
 const AddMessage = (props) => {
 	let input
 
-{/* <Input fluid  placeholder='Type here to chat...' 
-onKeyPress={(e) => {
-	if (e.key === 'Enter') {
-		props.dispatch(input.value, 'Me')
-		input.value = ''
-	}
-}}
-type="text"
-ref={(node) => {
-	input = node
-}}
-/>  */}
 
 	return (
 		<section id="new-message">

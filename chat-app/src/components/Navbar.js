@@ -12,14 +12,14 @@ class NavBar extends Component {
        return (
         <Menu style={{marginBottom: 0, border: '1px solid #3f3f3f'}}>
           <Menu.Menu >
-             <Menu.Item style={{borderRight: '1px solid #3f3f3f'}}>
+             <Menu.Item >
               <h2>Developer Chat : Final Project</h2> 
              </Menu.Item>
            </Menu.Menu>
 
            <Menu.Menu position="right">
      
-               <Menu.Item  style={{borderLeft: '1px solid #3f3f3f'}}   >
+               <Menu.Item     >
                     {/* <Link to ="/">
                         <Button color='white'> Log Out</Button>
                     </Link> */}

@@ -1,27 +1,32 @@
 import React, { Component } from 'react';
 
 import './App.css';
-import {Sidebar} from "./containers/Sidebar";
-import {MessagesList} from "./containers/MessagesList";
-import {AddMessage} from "./containers/AddMessage";
-import NavBar from "./components/Navbar";
+import ChatPage from "./ChatPage";
+import Login from "./Login";
+
 
 class App extends Component {
-  render() {
-    return (
-      <div>
-      <NavBar />   
-      <div id="container">
 
-       <Sidebar />
-        <section id="main">
-         <MessagesList />
-         <AddMessage />
-        </section>
-      </div>
-      </div>
-    );
+  state = {
+    username: null,
   }
-}
 
-export default App;
+  setUsername = (username) => {
+     this.setState({username});
+  }
+
+    render() {
+      return (
+        <div id='main app'>
+
+        {/* If username is not present, render the login page. Otherwise render Chat app page  */}
+        {
+          !this.state.username ?  <Login setUsername={this.setUsername}/> : <ChatPage/>
+        }
+
+        </div>
+      );
+    }
+  }
+  
+  export default App;
