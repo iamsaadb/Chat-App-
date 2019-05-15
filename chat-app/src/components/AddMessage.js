@@ -1,30 +1,59 @@
+import React, { Component } from 'react'
+import { connect } from 'react-redux';
+import { handlTextChange, submitMessage } from '../redux/actions/messageActions';
 
+<<<<<<< HEAD
 import React from 'react'
 import PropTypes from 'prop-types'
+=======
+>>>>>>> 30f731f90cec713894d27b8c5303059008846391
 
-const AddMessage = (props) => {
-	let input
 
+<<<<<<< HEAD
 	return (
 		<section id="new-message">
 			<input
+=======
+class AddMessage extends Component {
+
+  onSubmit = () => {
+    this.props.submitMessage();
+  }
+
+  handleTextChange = (e) => {
+    this.props.handlTextChange(e.target.value);
+  }
+
+  render() {
+
+	return (
+		<section id="new-message">
+            <input type="text" value={this.props.text} onChange={this.handleTextChange}
+                placeholder="Type here to chat.."
+>>>>>>> 30f731f90cec713894d27b8c5303059008846391
 				onKeyPress={(e) => {
 					if (e.key === 'Enter') {
-						props.dispatch(input.value, 'Me')
-						input.value = ''
+						this.props.submitMessage();
 					}
 				}}
-				type="text"
-				ref={(node) => {
-					input = node
-				}}
-			/>
+			/>  
 		</section>
-	)
+	)}
 }
 
-AddMessage.propTypes = {
-	dispatch: PropTypes.func.isRequired
-}
+const mapStateToProps = (state) => {
+    return {
+      messages: state.messageReducer.messages,
+      text: state.messageReducer.text,
+      user: state.userReducer.currentUser,
+      userList: state.userReducer.userList,
+    };
+  };
+  
+  const mapDispatchToProps = { handlTextChange, submitMessage };
+  
+  export default connect( 
+    mapStateToProps,
+    mapDispatchToProps,
+  )(AddMessage);
 
-export default AddMessage

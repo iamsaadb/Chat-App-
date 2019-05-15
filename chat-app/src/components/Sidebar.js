@@ -1,25 +1,22 @@
 
+import React, { Component } from 'react'
 
-import React from 'react'
-import PropTypes from 'prop-types'
+class Sidebar extends Component {
 
-const Sidebar = ({ users }) => (
+    render () {
+        return (
+    
 	<aside id="sidebar" className="sidebar">
+<<<<<<< HEAD
+=======
+	   <div className="ui fluid container" >
+>>>>>>> 30f731f90cec713894d27b8c5303059008846391
 		<ul>
-			{users.map(user => (
-				<li key={user.id}>{user.name}</li>
-			))}
+			{this.props.users.map((user, i) => 
+				<li key={i}>{user.username}</li>
+			)}
 		</ul>
 	</aside>
-)
-
-Sidebar.propTypes = {
-	users: PropTypes.arrayOf(
-		PropTypes.shape({
-			id: PropTypes.number.isRequired,
-			name: PropTypes.string.isRequired,
-		}).isRequired
-	).isRequired
-}
+)}}
 
 export default Sidebar
