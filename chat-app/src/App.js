@@ -20,12 +20,10 @@ class App extends Component {
     render() {
       return (
         <div id='main app'>
-
         {/* If username is undefinied render the login page. Otherwise render Chat app page  */}
         {
           !this.state.username ?  <UsernameForm setUsername={this.setUsername}/> : <ChatPage/>
         }
-
         </div>
       );
     }

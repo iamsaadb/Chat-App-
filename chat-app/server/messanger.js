@@ -27,7 +27,7 @@ mongoClient.connect((err) => {
     });
 
     app.get('/messanger/clearMessages', (req, res) => {
-      db.collection('messages').remove( { } )
+      db.collection('messages').remove({ })
           .then(() => console.log('db clear worked'))
           .catch((e) => console.log(e))
      res.send('messages cleared.');
@@ -62,6 +62,25 @@ mongoClient.connect((err) => {
         res.send('Error: ' + e);
       })
   });
+
+  app.get('/messanger/deleteUser', (req, res) => {
+    console.log('deleting ' + req.body)
+    db.collection('users').deleteOne({username: req.body.username},{})
+    .then(() => {
+      console.log('deleted ' + req.body)
+      res.send(docs);
+    })
+    .catch((e) => {
+      res.send('Error: ' + e);
+    })
+});
+
+ app.get('/messanger/clearUsers', (req, res) => {
+    db.collection('users').remove({ })
+       .then(() => console.log('db clear worked'))
+       .catch((e) => console.log(e))
+   res.send('messages cleared.');
+ });
 
     app.listen(5000);
 });

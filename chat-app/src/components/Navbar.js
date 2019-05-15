@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Menu, Button } from 'semantic-ui-react';
-//import { Link } from 'react-router-dom'
 
 class NavBar extends Component {
+
 
    render () {
        return (
@@ -16,10 +16,10 @@ class NavBar extends Component {
            <Menu.Menu position="right">
      
                <Menu.Item     >
-                    {/* <Link to ="/">
-                        <Button color='white'> Log Out</Button>
-                    </Link> */}
-                    <Button color='blue'> Log Out</Button>
+                    <Button color='blue'
+                            onClick={this.props.logOutButton}>
+                             Log Out
+                    </Button>
                </Menu.Item>
             </Menu.Menu>
          </Menu>

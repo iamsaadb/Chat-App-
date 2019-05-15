@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import {Redirect} from 'react-router-dom';
 import { updateMessages, handlTextChange, submitMessage } from './redux/actions/messageActions';
-import { updateUserList } from './redux/actions/userActions';
+import { updateUserList, deleteUser} from './redux/actions/userActions';
 import Sidebar from "./components/Sidebar";
 import MessagesList from "./components/MessageList";
 import AddMessage from "./components/AddMessage";
@@ -37,20 +38,26 @@ class ChatPage extends Component {
       });
   }
 
+  logOut = () => {
+     this.props.deleteUser(this.props.user);
+     return (
+      <Redirect to="./Login"/>
+     )
+  }
+
   render() {
      return (
 
           <div>
-            <NavBar />   
+            <NavBar logOutButton ={this.logOut}/>   
             <div id="container">
               <Sidebar users={this.props.userList}/>
-                <section id="main">
-                <MessagesList messages={this.props.messages} currentUser={this.props.user}/>
-                <AddMessage />
-                </section>
+                 <section id="main">
+                    <MessagesList messages={this.props.messages} currentUser={this.props.user}/>
+                    <AddMessage />
+                  </section>
               </div>
           </div>
-
     )}}
 
 const mapStateToProps = (state) => {
@@ -62,7 +69,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = { updateMessages, updateUserList, handlTextChange, submitMessage };
+const mapDispatchToProps = { updateMessages, updateUserList, handlTextChange, submitMessage, deleteUser };
 
 export default connect( // from react-redux
   mapStateToProps,
