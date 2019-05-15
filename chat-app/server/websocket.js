@@ -11,8 +11,6 @@ let usercount = 0;
 //event handler for connection: web socket server object
 wss.on('connection', (ws) => {
     ++usercount;
-    console.log('Someone has connected: '+ usercount);
-
 });
 
 wss.on('close', (ws) => {

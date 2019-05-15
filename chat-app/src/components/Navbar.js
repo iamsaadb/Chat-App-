@@ -17,7 +17,8 @@ class NavBar extends Component {
      
                <Menu.Item     >
                     <Button color='blue'
-                            onClick={this.props.logOutButton}>
+                            onClick={this.props.logOutButton
+                            }>
                              Log Out
                     </Button>
                </Menu.Item>

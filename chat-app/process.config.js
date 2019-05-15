@@ -10,11 +10,11 @@ module.exports = { // pm2 start process.config.js
       script: './server/messanger.js',
       watch: true,
     },
-    // {
-    //   name: 'websocket',
-    //   script: './server/websocket.js',
-    //   watch: true,
-    // },
+    {
+      name: 'websocket',
+      script: './server/websocket.js',
+      watch: true,
+    },
 
   {
     name: 'userList',

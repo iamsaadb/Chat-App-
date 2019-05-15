@@ -40,6 +40,7 @@ class ChatPage extends Component {
 
   logOut = () => {
      this.props.deleteUser(this.props.user);
+     this.props.setUsername('');
      return (
       <Redirect to="./Login"/>
      )

@@ -2,10 +2,10 @@
 
  # @author   Ratna Lama
  # @author   Tristan Mclennan
- # @author
- # @author
- # @author
- # @author
+ # @author   Dawit
+ # @author   Nour
+ # @author   Tigist
+ # @author   Saad
  #          
 Requirements for project:
 - Express back end with get/post endpoints
