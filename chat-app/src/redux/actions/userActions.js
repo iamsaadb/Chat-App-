@@ -22,8 +22,17 @@ export const addUser = user => {
   };
 };
 
-export const submitUser = () => (user) => {
-    axios.post('/userList/postUser', {"username" : user})
-      .then(() => { console.log('posted user to the database') })
+// export const submitUser = (user) => {
+//     axios.post('/messanger/postUser', {"username" : user})
+//       .then(() => { })
+//       .catch(e => console.log(e));
+//   };
+
+export const submitUser = (user) => (dispatch, getState) => {
+
+    dispatch(updateUser(user));
+    axios.post('/messanger/postMessage', {"username": user})
+      .then(() => { })
       .catch(e => console.log(e));
-  };
+      dispatch(addUser(getState().userReducer.currentUser));
+};

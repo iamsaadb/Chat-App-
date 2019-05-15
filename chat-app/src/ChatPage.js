@@ -25,7 +25,7 @@ class ChatPage extends Component {
         console.log(e);
       });
 
-      axios.get('/user/getUsers')
+      axios.get('/messanger/getUsers')
       .then((res) => {
 
         //filters out the data portion from the database array, saves to redux store:

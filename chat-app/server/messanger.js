@@ -44,27 +44,24 @@ mongoClient.connect((err) => {
         })
     });
     
-  //   //same as a get endpoint, but says post instead. 
-  //   app.post('/users/postUser', (req, res) => {
-  //     console.log(req.body);
-  //     db.collection('users').insertOne(req.body)
-  //         .then(() => console.log('user insert worked'))
-  //         .catch((e) => console.log(e))
-  //    res.send('doesnt matter');
-  // });
+    app.post('/messanger/postUser', (req, res) => {
+      console.log(req.body);
+      db.collection('users').insertOne(req.body)
+          .then(() => console.log('user insert worked'))
+          .catch((e) => console.log(e))
+     res.send('doesnt matter');
+  });
 
-
-  //  //same as a get endpoint, but says post instead. 
-  // app.get('/users/getUsers', (req, res) => {
-  //     db.collection('users').find({}).toArray()
-  //     .then((docs) => {
-  //       console.log(docs)
-  //       res.send(docs);
-  //     })
-  //     .catch((e) => {
-  //       res.send('Error: ' + e);
-  //     })
-  // });
+  app.get('/messanger/getUsers', (req, res) => {
+      db.collection('users').find({}).toArray()
+      .then((docs) => {
+        console.log(docs)
+        res.send(docs);
+      })
+      .catch((e) => {
+        res.send('Error: ' + e);
+      })
+  });
 
     app.listen(5000);
 });

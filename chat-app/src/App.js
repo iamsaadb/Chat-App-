@@ -12,10 +12,15 @@ class App extends Component {
   }
 
   setUsername = (username) => {
+    console.log(`setUsername: ${username}`);
     this.setState({username});
+    console.log(`this.setState: ${username}`);
     this.props.updateUser(username);
-    this.props.addUser(username);
+    console.log(`updateUser: ${username}`);
+    this.props.addUser(username)
+    console.log(`addUser: ${username}`);
     this.props.submitUser(username);
+    console.log(`submitUser: ${username}`);
 
   }
 
