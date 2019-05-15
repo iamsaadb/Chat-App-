@@ -3,10 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-<<<<<<< HEAD
-    "bootstrap": "^4.3.1",
-=======
->>>>>>> 13305a36158c5f8eb1957427d4388caa274fe86b
     "chance": "^1.0.18",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.8",
@@ -16,10 +12,6 @@
     "react-scripts": "3.0.0",
     "redux": "^4.0.1",
     "redux-saga": "^1.0.2",
-<<<<<<< HEAD
-    "semantic-ui-react": "^0.87.1",
-=======
->>>>>>> 13305a36158c5f8eb1957427d4388caa274fe86b
     "ws": "^7.0.0"
   },
   "scripts": {
