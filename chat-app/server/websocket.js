@@ -2,7 +2,6 @@ const WebSocket = require('ws');
 const redis = require('redis');
 const client = redis.createClient();
 
-
 //4 events related to websockets: need new because WebSocket is the constructor:
 const wss =  new WebSocket.Server({ port: 6000 });
 
@@ -22,4 +21,3 @@ client.on('message', (channel, message) => {
 });
 
 client.subscribe('message-channel');
-// client.subscribe('user-channel');

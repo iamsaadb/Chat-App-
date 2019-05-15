@@ -5,11 +5,11 @@ module.exports = { // pm2 start process.config.js
       script: './server/gateway.js',
       watch: true,
     },
-    // {
-    //   name: 'messanger',
-    //   script: './server/messanger.js',
-    //   watch: true,
-    // },
+    {
+      name: 'messanger',
+      script: './server/messanger.js',
+      watch: true,
+    },
     {
       name: 'websocket',
       script: './server/websocket.js',

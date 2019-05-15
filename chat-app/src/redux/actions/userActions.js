@@ -22,17 +22,20 @@ export const addUser = user => {
   };
 };
 
-// export const submitUser = (user) => {
-//     axios.post('/messanger/postUser', {"username" : user})
-//       .then(() => { })
-//       .catch(e => console.log(e));
-//   };
-
 export const submitUser = (user) => (dispatch, getState) => {
 
     dispatch(updateUser(user));
-    axios.post('/messanger/postMessage', {"username": user})
+    axios.post('/messanger/postUser', {"username": user})
       .then(() => { })
       .catch(e => console.log(e));
       dispatch(addUser(getState().userReducer.currentUser));
+};
+
+export const closeUser = (user) => (dispatch, getState) => {
+
+  dispatch(updateUser(user));
+  axios.post('/messanger/postUser', {"username": user})
+    .then(() => { })
+    .catch(e => console.log(e));
+    dispatch(addUser(getState().userReducer.currentUser));
 };
