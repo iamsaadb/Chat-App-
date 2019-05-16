@@ -2,18 +2,11 @@
 
  # @author   Ratna Lama
  # @author   Tristan Mclennan
-<<<<<<< HEAD
- # @author   Dawit
- # @author   Nour
- # @author   Tigist
- # @author   Saad
-=======
  # @author   Noureddine Youssfi
- # @author
- # @author
- # @author
->>>>>>> c9bcc9784410738db142961ff82a082a8b2be17b
- #          
+ # @author   Dawit Ayele
+ # @author   Tigist Ambaw
+ # @author   Saad Bouayad
+   
 Requirements for project:
 - Express back end with get/post endpoints
 - Mongodb for storage
