@@ -8,7 +8,8 @@
 }
 
 body {
-    font-family: "Press Start 2P";
+    font-family: 'Roboto', sans-serif
+
 }
 
 input[type=text], select, textarea {
@@ -45,8 +46,10 @@ input[type=text], select, textarea {
 }
 #messages-list {
     /* border-top: 1px solid #3f3f3f; */
+    font-size: 28;
     padding: 5px 0 0 5px;
-    margin-left: 5px;
+    margin-top: 15px;
+    margin-left: 35px;
     height: 100%;
 }
 
@@ -70,10 +73,6 @@ input[type=text], select, textarea {
     height: 100%;
     background-color:white
 }
-
-
-
-
 
 
 /* .ChatPage {
