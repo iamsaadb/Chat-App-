@@ -7,6 +7,7 @@
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "docker": "^1.0.0",
+    "docker-compose": "^0.17.2",
     "express": "^4.16.4",
     "http-proxy": "^1.17.0",
     "mongo-pool": "^0.1.0",
@@ -27,7 +28,14 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build-gateway": "docker build -f gateway.Dockerfile -t gateway . && docker tag gateway tmclennan/gateway && docker push tmclennan/gateway",
+    "build-websocket": "docker build -f websocket.Dockerfile -t websocket-demo . && docker tag websocket-demo tmclennan/websocket-demo && docker push tmclennan/websocket-demo",
+    "build-messanger": "docker build -f messanger.Dockerfile -t messanger-demo . && docker tag messanger-demo tmclennan/messanger-demo && docker push tmclennan/messanger-demo",
+    "build-frontend": "docker build -f frontend.Dockerfile -t react-demo . && docker tag react-demo tmclennan/react-demo && docker push tmclennan/react-demo",
+    "build-all-docker": "",
+    "deploy": "docker-compose -f devops/docker-compose.yml pull && docker stack deploy -c devops/docker-compose.yml message-app",
+    "stop": "docker stack remove message-app"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -15,7 +15,7 @@ export const updateUserList = list => {
 };
 
 export const addUser = user => {
-  console.log(`inserting new user: ${user}`)
+  console.log(`addUser inserting new user: ${user}`)
   return {
     type: 'ADD_USER',
     user,
@@ -23,19 +23,16 @@ export const addUser = user => {
 };
 
 export const deleteUser = (user) => (dispatch, getState) => {
-  axios.get('/messanger/deleteUser', {"username": user})
+  axios.post('/messanger/deleteUser', {"username": user})
     .then(() => { })
     .catch(e => console.log(e));
-    dispatch(updateUser(''));
+   // dispatch(updateUser(''));
     dispatch(updateUserList([]));
 };
 
 export const submitUser = (user) => (dispatch, getState) => {
-
-    dispatch(updateUser(user));
     axios.post('/messanger/postUser', {"username": user})
-      .then(() => { })
+      .then(() => {console.log('updateUser posted: ' +user)})
       .catch(e => console.log(e));
-      dispatch(addUser(getState().userReducer.currentUser));
 };
 

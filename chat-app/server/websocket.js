@@ -11,17 +11,23 @@ let usercount = 0;
 //event handler for connection: web socket server object
 wss.on('connection', (ws) => {
     ++usercount;
-});
+    console.log('Someone has joined: '+ usercount)
 
-wss.on('close', (ws) => {
-    --usercount;
-    console.log('Someone has left: '+ usercount)
-    if (usercount < 1) {
-        axios.get('/messanger/clearMessages')
-        .then(() => { })
-        .catch(e => console.log(e));
-    }
-})
+    //This clears all the conversation out of the database when the last person disconnects:
+    ws.on('close', (ws) => {
+        --usercount;
+        console.log('Someone has left: '+ usercount)
+        if (usercount < 1) {
+            axios.get('http://localhost:4000/messanger/clearMessages')
+            .then(() => { console.log('Cleared messages')})
+            .catch(e => console.log(e));
+
+            axios.get('http://localhost:4000/messanger/clearUsers')
+            .then(() => { console.log('Cleared users')})
+            .catch(e => console.log(e));
+        }
+    }) 
+});
 
 //we want to listen to messages being broadcast
 client.on('message', (channel, message) => {

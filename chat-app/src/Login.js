@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { updateUser, addUser } from './redux/actions/userActions';
-import './App.css';
+import '../../App.css';
 
 
 class Login extends Component {

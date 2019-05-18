@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { handlTextChange, submitMessage } from '../redux/actions/messageActions';
-
+import '../App.css';
 
 
 class AddMessage extends Component {

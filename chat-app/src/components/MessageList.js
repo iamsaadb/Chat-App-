@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Message from './Message'
-
+import '../App.css';
 
 class MessagesList extends Component {
 

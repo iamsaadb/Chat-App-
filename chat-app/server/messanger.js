@@ -16,7 +16,7 @@ mongoClient.connect((err) => {
     app.use(bodyParser.json());
     
     app.post('/messanger/postMessage', (req, res) => {
-        console.log('posting: ' + JSON.stringify(req.body));
+      //  console.log('posting: ' + JSON.stringify(req.body));
         db.collection('messages').insertOne(req.body)
             .then(() => console.log('db insert worked'))
             .catch((e) => console.log(e))
@@ -27,7 +27,7 @@ mongoClient.connect((err) => {
     });
 
     app.get('/messanger/clearMessages', (req, res) => {
-      db.collection('messages').remove({ })
+      db.collection('messages').deleteMany({ })
           .then(() => console.log('db clear worked'))
           .catch((e) => console.log(e))
      res.send('messages cleared.');
@@ -36,7 +36,6 @@ mongoClient.connect((err) => {
     app.get('/messanger/getMessages', (req, res) => {
         db.collection('messages').find({}).toArray()
         .then((docs) => {
-          console.log(docs);
           res.send(docs);
         })
         .catch((e) => {
@@ -45,9 +44,9 @@ mongoClient.connect((err) => {
     });
     
     app.post('/messanger/postUser', (req, res) => {
-      console.log(req.body);
+     // console.log(req.body);
       db.collection('users').insertOne(req.body)
-          .then(() => console.log('user insert worked'))
+          .then()
           .catch((e) => console.log(e))
      res.send('doesnt matter');
   });
@@ -63,11 +62,11 @@ mongoClient.connect((err) => {
       })
   });
 
-  app.get('/messanger/deleteUser', (req, res) => {
-    console.log('deleting ' + req.body)
-    db.collection('users').deleteOne({username: req.body.username},{})
-    .then(() => {
-      console.log('deleted ' + req.body)
+  app.post('/messanger/deleteUser', (req, res) => {
+    console.log('set to delete: '+req.body.username)
+    db.collection('users').findOneAndDelete({username: req.body.username})
+    .then((docs) => {
+      console.log(docs.username + ' deleted ' + req.body.username)
       res.send(docs);
     })
     .catch((e) => {
@@ -75,12 +74,22 @@ mongoClient.connect((err) => {
     })
 });
 
- app.get('/messanger/clearUsers', (req, res) => {
-    db.collection('users').remove({ })
-       .then(() => console.log('db clear worked'))
-       .catch((e) => console.log(e))
-   res.send('messages cleared.');
- });
+app.get('/messanger/clearUsers', (req, res) => {
+  db.collection('users').deleteMany({})
+      .then(() => console.log('db user clear worked'))
+      .catch((e) => console.log(e))
+ res.send('users cleared.');
+});
+
+ app.post('/messanger/verifyUser', (req, res) => {
+  db.collection('users').findOne({"username": req.body.username})
+  .then((docs) => {
+    res.send(!docs);
+  })
+  .catch((e) => {
+    res.send('Error: ' + e);
+  })
+});
 
     app.listen(5000);
 });

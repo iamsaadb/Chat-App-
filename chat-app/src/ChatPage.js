@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import {Redirect} from 'react-router-dom';
 import { updateMessages, handlTextChange, submitMessage } from './redux/actions/messageActions';
 import { updateUserList, deleteUser} from './redux/actions/userActions';
 import Sidebar from "./components/Sidebar";
@@ -15,7 +14,6 @@ class ChatPage extends Component {
     axios.get('/messanger/getMessages')
       .then((res) => {
         //filters out the id attribute from the database array, saves to redux store:
-        console.log(res.data);
         const resultArray = (res.data);
         const messageList = resultArray.map(({_id, ...keepAttrs}) => keepAttrs);
         this.props.updateMessages(messageList);
@@ -27,10 +25,11 @@ class ChatPage extends Component {
 
       axios.get('/messanger/getUsers')
       .then((res) => {
-
+        console.log(res.data)
         //filters out the data portion from the database array, saves to redux store:
         const resultArray = (res.data);
         const userList = resultArray.map(({_id, ...keepAttrs}) => keepAttrs);
+        console.log(userList)
         this.props.updateUserList(userList);
       })
       .catch((e) => {
@@ -40,10 +39,7 @@ class ChatPage extends Component {
 
   logOut = () => {
      this.props.deleteUser(this.props.user);
-     this.props.setUsername('');
-     return (
-      <Redirect to="./Login"/>
-     )
+     this.props.clearUsername();
   }
 
   render() {
