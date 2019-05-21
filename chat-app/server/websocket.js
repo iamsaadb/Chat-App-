@@ -39,4 +39,4 @@ client.on('message', (channel, message) => {
   });
 });
 
-client.subscribe('message-channel');
+client.subscribe('chatChannel');

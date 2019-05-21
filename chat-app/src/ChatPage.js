@@ -15,7 +15,7 @@ class ChatPage extends Component {
       .then((res) => {
         //filters out the id attribute from the database array, saves to redux store:
         const resultArray = (res.data);
-        const messageList = resultArray.map(({_id, ...keepAttrs}) => keepAttrs);
+        const messageList = resultArray.map(({type, ...keepAttrs}) => keepAttrs);
         this.props.updateMessages(messageList);
       })
       
@@ -28,7 +28,7 @@ class ChatPage extends Component {
         console.log(res.data)
         //filters out the data portion from the database array, saves to redux store:
         const resultArray = (res.data);
-        const userList = resultArray.map(({_id, ...keepAttrs}) => keepAttrs);
+        const userList = resultArray.map(({type, ...keepAttrs}) => keepAttrs);
         console.log(userList)
         this.props.updateUserList(userList);
       })

@@ -16,14 +16,15 @@ mongoClient.connect((err) => {
     app.use(bodyParser.json());
     
     app.post('/messanger/postMessage', (req, res) => {
-      //  console.log('posting: ' + JSON.stringify(req.body));
         db.collection('messages').insertOne(req.body)
             .then(() => console.log('db insert worked'))
             .catch((e) => console.log(e))
 
-            //publish with redis: 
-            client.publish('message-channel', JSON.stringify(req.body));
-       res.send('doesnt matter');
+            //publish new message data to the websocket with redis: 
+            client.publish('chatChannel', JSON.stringify({
+                "type" : "messageType",
+                "payload" : req.body}));
+       res.send('message posted');
     });
 
     app.get('/messanger/clearMessages', (req, res) => {
@@ -44,17 +45,20 @@ mongoClient.connect((err) => {
     });
     
     app.post('/messanger/postUser', (req, res) => {
-     // console.log(req.body);
       db.collection('users').insertOne(req.body)
           .then()
           .catch((e) => console.log(e))
-     res.send('doesnt matter');
+          
+       //publishes new user data to the websocket with redis: 
+       client.publish('chatChannel', JSON.stringify({
+        "type" : "userType",
+        "payload" : req.body }));
+     res.send('User posted');
   });
 
   app.get('/messanger/getUsers', (req, res) => {
       db.collection('users').find({}).toArray()
       .then((docs) => {
-        console.log(docs)
         res.send(docs);
       })
       .catch((e) => {
@@ -63,10 +67,8 @@ mongoClient.connect((err) => {
   });
 
   app.post('/messanger/deleteUser', (req, res) => {
-    console.log('set to delete: '+req.body.username)
     db.collection('users').findOneAndDelete({username: req.body.username})
     .then((docs) => {
-      console.log(docs.username + ' deleted ' + req.body.username)
       res.send(docs);
     })
     .catch((e) => {
